@@ -5,13 +5,13 @@ export function downloadCsv(data: Message[], fileName: string = "log-messages.cs
 		fileName = "log-messages.csv";
 	}
 	// convert to CSV
-	let csv = "num,text,timestamp,elapsed\n";
+	let csv = "num,text,timestamp,elapsed";
 	data.forEach((item) => {
 		csv += `
-        ${item.num},\
-        ${item.text},\
-        ${item.timestamp.toUTCString().replace(",", "")},\
-        ${item.elapsed}\
+${item.num},\
+${item.text},\
+${item.timestamp.toUTCString().replace(",", "")},\
+${item.elapsed}\
         `;
 	});
 	let blob = new Blob([csv], { type: "text/csv" });
