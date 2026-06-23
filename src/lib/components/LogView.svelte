@@ -45,6 +45,18 @@
 		}
 		newMsgText = "";
 	}
+
+	function removeItem(itemNum: number) {
+		const itemIndex = tabData.messages.findIndex(m => m.num === itemNum);
+		tabData.messages.splice(itemIndex, 1);
+		// now re-assign message numbers
+		tabData.messages.forEach((msg) => {
+			if (msg.num > itemNum) {
+				msg.num -= 1;
+			}
+		});
+		tabData.messages = tabData.messages;
+	}
 </script>
 
 <div class="flex justify-center w-full sm:3/4 md:w-1/2 sm:space-x-4 mx-auto py-5 px-4">
@@ -153,7 +165,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each sortedMessages as msg}
+		{#each sortedMessages as msg, i}
 			<tr class="border-y-2 border-y-sky-700 border-opacity-25">
 				<td>
 					{#if msg.num !== 1}
@@ -161,7 +173,7 @@
 							class="text-red-700 align-middle"
 							aria-label={`${msg.num} delete`}
 							type="button"
-							onclick={() => (tabData.messages = tabData.messages.filter((m) => m.num !== msg.num))}
+							onclick={() => removeItem(msg.num)}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
