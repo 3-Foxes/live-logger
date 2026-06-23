@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import LogView from "./lib/components/LogView.svelte";
 	import TabSection from "./lib/components/TabSection.svelte";
-	import { initializeEmptyTab, type AppData, type TabData } from "./lib/models";
+	import { initializeEmptyTab, type AppData } from "./lib/models";
 
 	function loadSessionOrFresh(): AppData {
 		const previousData = window.sessionStorage.getItem("logger-data");
