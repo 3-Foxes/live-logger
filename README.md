@@ -1,5 +1,7 @@
 # Live Logger
 
+> Archived as this project is considered finished. Available at: https://live-logger.3-foxes.com
+
 Simple, friendly, for Michelle and Co.
 
 - Type or paste a message and it appears immediately on the screen.
