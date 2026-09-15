@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LogView from "./lib/components/LogView.svelte";
 	import TabSection from "./lib/components/TabSection.svelte";
+	import Footer from "./lib/components/Footer.svelte";
 	import { initializeEmptyTab, type AppData } from "./lib/models";
 
 	function loadSessionOrFresh(): AppData {
@@ -49,15 +50,19 @@
 	$inspect(appData);
 </script>
 
-<main class="text-center mx-auto text-sky-700 p-4 font-thin">
-	<h1 class="text-6xl uppercase py-4 underline underline-offset-auto">Live Logger</h1>
+<div class="flex min-h-screen flex-col">
+	<main class="flex-1 text-center mx-auto w-full text-sky-700 p-4 font-thin">
+		<h1 class="text-6xl uppercase py-4 underline underline-offset-auto">Live Logger</h1>
 
-	<TabSection
-		bind:selectedTab={appData.activeTabIndex}
-		bind:totalTabs={appData.tabCount}
-		addTabCallback={addTabData}
-		deleteTabCallback={deleteTabData}
-	/>
+		<TabSection
+			bind:selectedTab={appData.activeTabIndex}
+			bind:totalTabs={appData.tabCount}
+			addTabCallback={addTabData}
+			deleteTabCallback={deleteTabData}
+		/>
 
-	<LogView bind:tabData={appData.tabData[appData.activeTabIndex]} />
-</main>
+		<LogView bind:tabData={appData.tabData[appData.activeTabIndex]} />
+	</main>
+
+	<Footer />
+</div>
